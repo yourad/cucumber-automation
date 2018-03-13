@@ -13,7 +13,7 @@ ansiColor('xterm') {
         }
 
         stage('Test') {
-            sh './gradlew test --stacktrace --info -Dtest.single=relas-cucumber-tests'
+            sh './gradlew test --stacktrace --info -Dtest.single=IntegrationstestStarten'
             cucumber fileIncludePattern: 'build/reports/features/json/**/*cucumber_report.json', buildStatus: 'UNSTABLE'
         }
     }
