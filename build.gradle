@@ -1,0 +1,50 @@
+apply plugin: 'java'
+
+repositories {
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+}
+
+def cucumberVersion = "1.2.5"
+
+dependencies {
+
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.23'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8'
+
+
+    testCompile group: 'org.assertj', name:'assertj-core',version:'3.6.2'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.0.1'
+    testCompile group: 'info.cukes', name: 'gherkin', version: '2.12.2'
+    testCompile group: 'info.cukes', name: 'cucumber-core', version: cucumberVersion
+    testCompile group: 'info.cukes', name: 'cucumber-junit', version: cucumberVersion
+    testCompile group: 'info.cukes', name: 'cucumber-java', version: cucumberVersion
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'log4j', name: 'log4j', version: '1.2.17'
+    testCompile group: 'net.masterthought', name:'cucumber-reporting',version:'3.8.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
+    systemProperty 'file.encoding', 'UTF-8'
+}
+
+test {
+    reports {
+        // Cucumber die Berichte generieren lassen
+        html.enabled = false
+        junitXml.enabled = false
+    }
+    // Immer die Tests ausführen
+    outputs.upToDateWhen { false }
+}
