@@ -75,7 +75,7 @@ public class DriverSetup {
                 //   driver = new FirefoxDriver(capabilities);
                 break;
         }
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); // für die
+        driver = new RemoteWebDriver(new URL("http://172.24.93.161:4444/wd/hub"), capabilities); // für die
         driver.manage().timeouts().pageLoadTimeout(timeoutInSecond, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(timeoutInSecond, TimeUnit.SECONDS);
     }
