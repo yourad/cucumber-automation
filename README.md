@@ -18,4 +18,8 @@
 	Import project from external model 'Gradle'
 	Use auto import 
 ### Install Gherkin und Cucumber Plugins 
-	(File/Settings/Plugin)	
+	(File/Settings/Plugin)
+	
+### problem mit gradlew: Permission Denied
+
+git update-index --chmod=+x gradlew	

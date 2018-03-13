@@ -2,14 +2,15 @@ package common;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import testData.TestData;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -51,17 +52,17 @@ public class DriverSetup {
 //                chromeOptions.addArguments("--disable-gpu");
 
 
-/*
+
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
                 capabilities.setBrowserName("chrome");
                 capabilities.setPlatform(Platform.LINUX);
-                capabilities.setVersion("61.0.3163.91");
-*/
+                capabilities.setVersion("59.0.3071.115");
 
-                String pathToChromeDriver = ".//selenium//chromedriver.exe";
+
+/*                String pathToChromeDriver = ".//selenium//chromedriver.exe";
                 System.setProperty("webdriver.chrome.driver", pathToChromeDriver);
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-                driver = new ChromeDriver(capabilities);
+                driver = new ChromeDriver(capabilities);*/
                 break;
             case "IE":
                 System.out.println("Opening IE driver");
@@ -74,7 +75,7 @@ public class DriverSetup {
                 //   driver = new FirefoxDriver(capabilities);
                 break;
         }
-       // driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); // für die
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); // für die
         driver.manage().timeouts().pageLoadTimeout(timeoutInSecond, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(timeoutInSecond, TimeUnit.SECONDS);
     }
