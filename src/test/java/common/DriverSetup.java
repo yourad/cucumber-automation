@@ -47,7 +47,7 @@ public class DriverSetup {
                 System.out.println("Opening chrome driver");
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--start-maximized");
-                //  chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--headless");
 //                chromeOptions.addArguments("--lang=de-DE");
 //                chromeOptions.addArguments("--disable-gpu");
 
