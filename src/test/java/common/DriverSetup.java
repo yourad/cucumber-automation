@@ -46,17 +46,17 @@ public class DriverSetup {
             case "chrome":
                 System.out.println("Opening chrome driver");
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--start-maximized");
+//                chromeOptions.addArguments("--start-maximized");
+//                chromeOptions.setBinary("/usr/bin/chromium-browser");
                 chromeOptions.addArguments("--headless");
 //                chromeOptions.addArguments("--lang=de-DE");
 //                chromeOptions.addArguments("--disable-gpu");
 
 
-
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
                 capabilities.setBrowserName("chrome");
                 capabilities.setPlatform(Platform.LINUX);
-                capabilities.setVersion("59.0.3071.115");
+                capabilities.setVersion("65.0.3325.146");
 
 
 /*                String pathToChromeDriver = ".//selenium//chromedriver.exe";
