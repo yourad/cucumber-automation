@@ -40,7 +40,7 @@ public class DriverSetup {
                 capabilities = DesiredCapabilities.firefox();
                 capabilities.setBrowserName("firefox");
                 capabilities.setPlatform(Platform.LINUX);
-                capabilities.setVersion("55.0.3");
+                capabilities.setVersion("58.0.2");
                 //  driver = new FirefoxDriver(desiredCapabilities);
                 break;
             case "chrome":
