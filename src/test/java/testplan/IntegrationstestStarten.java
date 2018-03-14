@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = {"steps"},                   // Ort wo die Steps Definitions sich befinden -->
         features = "src/test/features/",    // Ort wo die fachliche Spezifikation sich befindet (Features--> Szenarios --> Steps)
-        tags = {"@Integrationstest"},  // Welche Tests sollen selektiv ausgeführt werden
+        tags = {"@Integrationstest"},       // Welche Tests sollen selektiv ausgeführt werden
         format = {"pretty","json:build/reports/features/json/integrationstest_cucumber_report.json"}) // Report Format
 public class IntegrationstestStarten {
 }
