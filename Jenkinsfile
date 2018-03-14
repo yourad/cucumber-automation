@@ -13,8 +13,8 @@ ansiColor('xterm') {
         }
 
         stage('Test') {
-            sh './gradlew test --stacktrace --info -Dtest.single=IntegrationstestStarten'
-            cucumber fileIncludePattern: 'build/reports/features/json/**/*cucumber_report.json', buildStatus: 'UNSTABLE'
+            sh './gradlew test --stacktrace --debug -Dtest.single=IntegrationstestStarten'
+            cucumber fileIncludePattern: 'build/reports/features/json/**/*cucumber_report.json', ignoreFailedTests: false, missingFails: false, parallelTesting: false, pendingFails: false, skippedFails: false, undefinedFails: false
         }
     }
 }
