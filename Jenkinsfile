@@ -9,12 +9,12 @@ ansiColor('xterm') {
         stage('Build') {
 
           //build gradle
-          sh './gradlew testClasses --stacktrace'
+          sh './gradlew testClasses --debug'
         }
 
         stage('Test') {
             sh './gradlew test --stacktrace --debug -Dtest.single=IntegrationstestStarten'
-            cucumber fileIncludePattern: 'build/reports/features/json/**/*cucumber_report.json', buildStatus: 'STABLE'
+            cucumber fileIncludePattern: 'build/reports/features/json/**/*cucumber_report.json', buildStatus: 'UNSTABLE'
         }
     }
 }

@@ -42,8 +42,8 @@ tasks.withType(Test) {
 test {
     reports {
         // Cucumber die Berichte generieren lassen
-        html.enabled = false
-        junitXml.enabled = false
+        html.enabled = true
+        junitXml.enabled = true
     }
     // Immer die Tests ausführen
     outputs.upToDateWhen { false }
