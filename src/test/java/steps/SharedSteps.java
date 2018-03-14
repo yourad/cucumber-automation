@@ -38,7 +38,7 @@ public class SharedSteps {
 
     @Gegebensei("^die Startseite (.+) ist geladen$")
     public void checkStartseiteIstAngezeigt(String homeSeitentitel) {
-        assertEquals(homeSeitentitel + "gh", new HomePage(DriverSetup.getDriver()).getTitle());
+        assertEquals(homeSeitentitel , new HomePage(DriverSetup.getDriver()).getTitle());
     }
 
     /**
