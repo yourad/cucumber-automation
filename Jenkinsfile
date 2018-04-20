@@ -3,17 +3,17 @@ ansiColor('xterm') {
         stage('Checkout') {
         // Checkout code from repository and update any submodules
         checkout scm
-        sh 'git submodule update --init'
+        bat 'git submodule update --init'
         }
 
         stage('Build') {
 
           //build gradle
-          sh './gradlew testClasses --debug'
+          bat './gradlew testClasses --debug'
         }
 
         stage('Test') {
-            sh './gradlew test --stacktrace --debug -Dtest.single=IntegrationstestStarten'
+            bat './gradlew test --stacktrace --debug -Dtest.single=IntegrationstestStarten'
             cucumber fileIncludePattern: 'build/reports/features/json/**/*cucumber_report.json', buildStatus: 'UNSTABLE'
         }
     }
