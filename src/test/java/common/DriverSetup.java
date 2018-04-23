@@ -3,6 +3,7 @@ package common;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -40,7 +41,7 @@ public class DriverSetup {
                 capabilities = DesiredCapabilities.firefox();
                 capabilities.setBrowserName("firefox");
                 capabilities.setPlatform(Platform.LINUX);
-                capabilities.setVersion("58.0.2");
+                capabilities.setVersion("59.0.2");
                 //  driver = new FirefoxDriver(desiredCapabilities);
                 break;
             case "chrome":
@@ -56,7 +57,7 @@ public class DriverSetup {
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
                 capabilities.setBrowserName("chrome");
                 capabilities.setPlatform(Platform.LINUX);
-                capabilities.setVersion("65.0.3325.146");
+                capabilities.setVersion("65.0.3325.181");
 
 
 /*                String pathToChromeDriver = ".//selenium//chromedriver.exe";
@@ -72,10 +73,10 @@ public class DriverSetup {
             default:
                 System.out.println("browser : " + browserType + " is invalid, Launching Firefox as default browser");
                 capabilities.setBrowserName("firefox");
-                //   driver = new FirefoxDriver(capabilities);
+                driver = new FirefoxDriver(capabilities);
                 break;
         }
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); // für die
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
         driver.manage().timeouts().pageLoadTimeout(timeoutInSecond, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(timeoutInSecond, TimeUnit.SECONDS);
     }

@@ -10,7 +10,6 @@ import pages.HomePage;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 import static common.DriverSetup.setDriver;
@@ -48,7 +47,7 @@ public class SharedSteps {
      */
     @After
     public void cleanup(Scenario scenario) {
-        if (scenario.isFailed() || Objects.equals(scenario.getStatus(), "undefined"))
+        if (scenario.isFailed() || scenario.getStatus().toString().equals("undefined"))
             try {
                 screenshotHinzufuegen(scenario);
             } catch (MalformedURLException e) {

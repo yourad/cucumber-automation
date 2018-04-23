@@ -7,4 +7,3 @@ Funktionalität: Login
   Szenario:Benutzer kann sich erfolgreich einloggen
 
     Gegeben sei die Startseite wikipedia.de - Wikipedia, die freie Enzyklopädie ist geladen
-
