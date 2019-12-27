@@ -29,3 +29,4 @@ docker pull selenium/hub:latest
 docker pull selenium/node-chrome-debug:latest
 docker start selenium-hub
 docker run -d -p 4445:5900 --link selenium-hub:hub selenium/node-chrome-debug:latest
+#test branch
