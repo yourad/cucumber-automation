@@ -49,21 +49,21 @@ public class DriverSetup {
                 ChromeOptions chromeOptions = new ChromeOptions();
 //                chromeOptions.addArguments("--start-maximized");
 //                chromeOptions.setBinary("/usr/bin/chromium-browser");
-                chromeOptions.addArguments("--headless");
+//                chromeOptions.addArguments("--headless");
 //                chromeOptions.addArguments("--lang=de-DE");
 //                chromeOptions.addArguments("--disable-gpu");
 
 
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
                 capabilities.setBrowserName("chrome");
-                capabilities.setPlatform(Platform.LINUX);
-                capabilities.setVersion("65.0.3325.181");
+//                capabilities.setPlatform(Platform.LINUX);
+//                capabilities.setVersion("65.0.3325.181");
 
 
-/*                String pathToChromeDriver = ".//selenium//chromedriver.exe";
+                String pathToChromeDriver = ".//selenium//chromedriver.exe";
                 System.setProperty("webdriver.chrome.driver", pathToChromeDriver);
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-                driver = new ChromeDriver(capabilities);*/
+                driver = new ChromeDriver(capabilities);
                 break;
             case "IE":
                 System.out.println("Opening IE driver");
@@ -76,7 +76,7 @@ public class DriverSetup {
                 driver = new FirefoxDriver(capabilities);
                 break;
         }
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+      //  driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
         driver.manage().timeouts().pageLoadTimeout(timeoutInSecond, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(timeoutInSecond, TimeUnit.SECONDS);
     }
