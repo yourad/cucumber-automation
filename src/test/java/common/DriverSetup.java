@@ -1,17 +1,14 @@
 package common;
 
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import testData.TestData;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -31,57 +28,50 @@ public class DriverSetup {
         return driver;
     }
 
-    public static void setDriver() throws MalformedURLException {
+    public static void setDriver() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         String browserType = testData.getBrowser();
         switch (browserType.toLowerCase()) {
             case "firefox":
                 System.out.println("Opening firefox driver");
-                capabilities = DesiredCapabilities.firefox();
-                capabilities.setBrowserName("firefox");
-                capabilities.setPlatform(Platform.LINUX);
-                capabilities.setVersion("59.0.2");
-                //  driver = new FirefoxDriver(desiredCapabilities);
+
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                driver = new FirefoxDriver(firefoxOptions);
                 break;
             case "chrome":
                 System.out.println("Opening chrome driver");
                 ChromeOptions chromeOptions = new ChromeOptions();
 //                chromeOptions.addArguments("--start-maximized");
 //                chromeOptions.setBinary("/usr/bin/chromium-browser");
-                chromeOptions.addArguments("--headless");
+//                chromeOptions.addArguments("--headless");
 //                chromeOptions.addArguments("--lang=de-DE");
 //                chromeOptions.addArguments("--disable-gpu");
 
 
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
                 capabilities.setBrowserName("chrome");
-                capabilities.setPlatform(Platform.LINUX);
-                capabilities.setVersion("65.0.3325.181");
+//                capabilities.setPlatform(Platform.MAC);
+//                capabilities.setVersion("80.0.3987.106");
 
 
-/*                String pathToChromeDriver = ".//selenium//chromedriver.exe";
+                String pathToChromeDriver = ".//selenium//chromedriver";
                 System.setProperty("webdriver.chrome.driver", pathToChromeDriver);
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-                driver = new ChromeDriver(capabilities);*/
+                driver = new ChromeDriver();
                 break;
             case "IE":
                 System.out.println("Opening IE driver");
                 capabilities.setBrowserName("ie");
                 //   driver = new InternetExplorerDriver(capabilities);
                 break;
-            default:
-                System.out.println("browser : " + browserType + " is invalid, Launching Firefox as default browser");
-                capabilities.setBrowserName("firefox");
-                driver = new FirefoxDriver(capabilities);
-                break;
         }
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+   //     driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
         driver.manage().timeouts().pageLoadTimeout(timeoutInSecond, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(timeoutInSecond, TimeUnit.SECONDS);
     }
 
-    public static void startApp() throws IOException, InterruptedException {
+    public static void startApp() {
 
         driver.navigate().to(testData.getAppURL());
 

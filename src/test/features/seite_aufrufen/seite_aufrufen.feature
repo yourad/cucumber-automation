@@ -1,9 +1,15 @@
 # encoding: utf-8
 # language:de
 
-Funktionalität: Login
+Funktionalität: Seite aufrufen
 
   @Integrationstest
-  Szenario:Benutzer kann sich erfolgreich einloggen
+  Szenariogrundriss: Seite kann erfolgreich aufgerufen werden
 
-    Gegeben sei die Startseite wikipedia.de - Wikipedia, die freie Enzyklopädie ist geladen
+    Angenommen die Startseite <Seitenname> ist geladen
+
+
+    Beispiele:
+      | Seitenname                        |
+      | Wikipedia, die freie Enzyklopädie |
+      | Falscher Seitenname               |

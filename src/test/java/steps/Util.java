@@ -1,6 +1,6 @@
 package steps;
 
-import cucumber.api.Scenario;
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +22,7 @@ class Util {
      * Sollte am besten nur aufgerufen werden wenn ein Szenario fehlschlägt
      * @param scenario Das Szenario in dem das Bild integriert wird
      */
-    static void screenshotHinzufuegen(Scenario scenario) throws MalformedURLException {
+    static void screenshotHinzufuegen(Scenario scenario) {
         try {
             WebDriver driver = getDriver();
             if (driver == null) {
@@ -30,7 +30,7 @@ class Util {
                 return;
             }
             byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png");
+            scenario.embed(screenshot, "image/png", scenario.getName());
         } catch (RuntimeException e) {
             System.err.println("Screenshot konnte nicht geschrieben werden");
             e.printStackTrace();

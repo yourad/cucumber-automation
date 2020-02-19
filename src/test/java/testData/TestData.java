@@ -3,6 +3,7 @@ package testData;
 import common.DriverSetup;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 /**
  * Liest die Testdaten von test.properties.
@@ -15,7 +16,7 @@ public class TestData {
     public TestData() {
         properties = new Properties();
         try {
-            this.properties.load(DriverSetup.class.getClassLoader().getResourceAsStream("test.properties"));
+            this.properties.load(Objects.requireNonNull(DriverSetup.class.getClassLoader().getResourceAsStream("test.properties")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

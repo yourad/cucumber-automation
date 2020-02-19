@@ -1,15 +1,13 @@
 package steps;
 
 import common.DriverSetup;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.de.Gegebensei;
-import org.apache.log4j.BasicConfigurator;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import io.cucumber.java.de.Gegebensei;
 import pages.HomePage;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 import static org.junit.Assert.assertEquals;
 import static common.DriverSetup.setDriver;
@@ -29,8 +27,7 @@ public class SharedSteps {
      */
 
     @Before
-    public void setup() throws IOException, InterruptedException {
-        BasicConfigurator.configure();
+    public void setup() {
         setDriver();
         startApp();
     }
@@ -50,7 +47,7 @@ public class SharedSteps {
         if (scenario.isFailed() || scenario.getStatus().toString().equals("undefined"))
             try {
                 screenshotHinzufuegen(scenario);
-            } catch (MalformedURLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         DriverSetup.close();
